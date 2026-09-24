@@ -4,6 +4,15 @@ using docker_test_api.Services;
 using docker_test_api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddSingleton<MappingService>();
 builder.Services.AddScoped<Book_Repository>();
@@ -29,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseAuthorization();
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
