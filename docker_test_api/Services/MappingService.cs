@@ -10,7 +10,7 @@ namespace docker_test_api.Services
             Id = book.Id,
             Name = book.Name,
             Author = book.Author,
-            CratedDate = book.CratedDate
+            CreatedDate = book.CratedDate
         };
 
         public List<BookDTO> MapBookList(List<Book> books) => books.Select(MapBook).ToList();
@@ -19,14 +19,14 @@ namespace docker_test_api.Services
         {
             Name = dto.Name,
             Author = dto.Author,
-            CratedDate = dto.CratedDate
+            CratedDate = dto.CreatedDate
         };
         public Book MapBookDto(UpdateBookDto dto) => new()
         {
             Id = dto.Id,
             Name = dto.Name,
             Author = dto.Author,
-            CratedDate = dto.CratedDate
+            CratedDate = dto.CreatedDate
         };
 
     }
